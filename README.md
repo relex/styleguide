@@ -13,5 +13,5 @@ Disagreements and clarifications are welcome.
 
 These style guides are licensed under the CC-By 3.0 License, which encourages you to share these documents. See http://creativecommons.org/licenses/by/3.0/ for more details.
 
-[java]: http://google.github.io/styleguide/javaguide.html
+[java]: http://relex.github.io/styleguide/javaguide.html
 [ruby]: https://github.com/bbatsov/ruby-style-guide
