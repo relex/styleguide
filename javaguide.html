@@ -220,6 +220,16 @@
         <dd>
             <a href="#s6.6-immutability">6.6 Strive for immutability</a>
         </dd>
+        <dd>
+            <a href="#s6.7-annotations">6.7 Annotations</a>
+        </dd>
+        <dd class="toc3">
+            <a href="#s6.7.1-nullness-annotations">6.7.1 Nullness annotations</a>
+        </dd>
+        <dd>
+        <dd class="toc3">
+            <a href="#s6.7.2-generator-annotations">6.7.2 Code generating annotations</a>
+        </dd>
         <br>
         <dt class="toc1">
             <a href="#s7-javadoc">7 Javadoc</a>
@@ -1216,6 +1226,25 @@ Whenever possible, the code should use immutable values and the class- and insta
 Term immutable means that said fields are declared <code class="prettyprint lang-java">final</code> and that the objects
 they point to cannot be mutated.
 This limits the mutable software state and thus makes reasoning about it easier.
+
+<a name="s6.7-annotations"/>
+
+<h3>6.7 Annotations&nbsp;<a href="#s6.7-annotations"><img height="21" width="21"
+                                                                       src="javaguidelink.png"/></a></h3>
+<a name="s6.7.1-nullness-annotations"/>
+<h4>6.7.1 Nullness annotations&nbsp;<a href="#s6.7.1-nullness-annotations"><img height="21" width="21"
+                                                                       src="javaguidelink.png"/></a></h4>
+We use JSR-305 <code class="prettyprint lang-java">javax.annotations</code> classes to denote nullability of fields,
+parameters and return values. Prefer explicit nullability and thus mark all such cases with
+<code class="prettyprint lang-java">javax.annotations.Nullable</code> instead of marking non-null cases.
+Configure your IDE to use the annotations and show their violations with some level of warning (error-level is too much
+as very little of our code base 
+<a name="s6.7.2-generator-annotations"/>
+<h4>6.7.2 Code generating annotations&nbsp;<a href="#s6.7.2-generator-annotations"><img height="21" width="21"
+                                                                       src="javaguidelink.png"/></a></h4>
+Instead of generating simple immutable classes and builder for them by hand, use
+<a href="https://immutables.github.io/">Immutables-library</a> to generate them for you. This reduces both drudgery and
+the amount of code we need to maintain.
 <a name="javadoc"/><a name="s7-javadoc"/>
 
 <h2>7 Javadoc&nbsp;<a href="#s7-javadoc"><img height="21" width="21" src="javaguidelink.png"/></a></h2>
