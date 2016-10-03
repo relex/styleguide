@@ -230,6 +230,9 @@
         <dd class="toc3">
             <a href="#s6.7.2-generator-annotations">6.7.2 Code generating annotations</a>
         </dd>
+        <dd class="toc3">
+            <a href="#s6.7.3-suppress-warnings-annotations">6.7.3 Suppress warnings</a>
+        </dd>
         <br>
         <dt class="toc1">
             <a href="#s7-javadoc">7 Javadoc</a>
@@ -1238,15 +1241,25 @@ We use JSR-305 <code class="prettyprint lang-java">javax.annotations</code> clas
 parameters and return values. Prefer explicit nullability and thus mark all such cases with
 <code class="prettyprint lang-java">javax.annotations.Nullable</code> instead of marking non-null cases.
 Configure your IDE to use the annotations and show their violations with some level of warning (error-level is too much
-as very little of our code base
+as very little of our code base has a lot of nullability problems).
+
 <a name="s6.7.2-generator-annotations"/>
 <h4>6.7.2 Code generating annotations&nbsp;<a href="#s6.7.2-generator-annotations"><img height="21" width="21"
                                                                        src="javaguidelink.png"/></a></h4>
 Instead of generating simple immutable classes and builder for them by hand, use
 <a href="https://immutables.github.io/">Immutables-library</a> to generate them for you. This reduces both drudgery and
 the amount of code we need to maintain.
-<a name="javadoc"/><a name="s7-javadoc"/>
 
+<a name="s6.7.3-suppress-warnings-annotations"/>
+<h4>6.7.3 Suppress warnings&nbsp;<a href="#s6.7.3-suppress-warnings-annotations"><img height="21" width="21"
+                                                                       src="javaguidelink.png"/></a></h4>
+There are legitimate uses for suppressing compiler warnings. The most often used and misused case is <code class="prettyprint lang-java prettyprinted">@SuppressWarning("unchecked")</code>.
+
+Always first figure out whether your current typing or Java type-system that's insufficient.
+In case of latter, <em>don't annotate the whole method</em>, but instead just the local variable definition. Otherwise, later
+type-problems are hidden by the annotation.
+
+<a name="javadoc"/><a name="s7-javadoc"/>
 <h2>7 Javadoc&nbsp;<a href="#s7-javadoc"><img height="21" width="21" src="javaguidelink.png"/></a></h2>
 <a name="s7.1-javadoc-formatting"/>
 
